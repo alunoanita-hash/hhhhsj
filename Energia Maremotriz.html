@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Energia Maremotriz</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#062B45;--ocean:#087EAD;--sky:#43BFE8;--teal:#00C9B7;--bg:#F1F5F9;--card:#fff;--ink:#0b2233;--mut:#4b6475;--line:#d5e1ea;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#04202f;--card:#0a3550;--ink:#eaf6fb;--mut:#9cc3d6;--line:#16506f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#04202f;--card:#0a3550;--ink:#eaf6fb;--mut:#9cc3d6;--line:#16506f;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 "Source Sans 3",system-ui,sans-serif}
+h1,h2,h3{font-family:Sora,system-ui,sans-serif;line-height:1.15;margin:0 0 .5em}
+nav{position:sticky;top:0;z-index:20;background:var(--navy);display:flex;gap:4px;overflow-x:auto;padding:10px 16px;white-space:nowrap}
+nav a{color:#cfeaf5;text-decoration:none;padding:6px 12px;border-radius:99px;font-size:15px}
+nav a:hover,nav a:focus-visible{background:var(--ocean);color:#fff;outline:none}
+.hero{background:linear-gradient(180deg,var(--navy),var(--ocean));color:#fff;position:relative;overflow:hidden;padding:80px 20px 150px}
+.hero .in,.wrap{max-width:1000px;margin:0 auto}
+.hero h1{font-size:clamp(2.4rem,8vw,5rem);font-weight:800;letter-spacing:-.02em}
+.hero p{max-width:60ch;font-size:1.15rem}
+.btn{display:inline-block;border:0;cursor:pointer;font:600 1rem Sora,sans-serif;padding:12px 22px;border-radius:10px;text-decoration:none;margin:6px 8px 6px 0;background:var(--teal);color:var(--navy)}
+.btn.o{background:transparent;color:#fff;border:2px solid var(--sky)}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.waves{position:absolute;left:0;bottom:0;width:200%;height:130px;animation:w 14s linear infinite}
+.waves.b{animation-duration:9s;opacity:.55;height:100px}
+@keyframes w{to{transform:translateX(-50%)}}
+.turb{position:absolute;right:6%;bottom:40px;width:120px;opacity:.9}
+.rot{transform-box:fill-box;transform-origin:center;animation:r 4s linear infinite}
+@keyframes r{to{transform:rotate(360deg)}}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:28px}
+.three div{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:12px;padding:14px 16px;font-size:1rem}
+section{padding:64px 20px}section:nth-of-type(even){background:var(--card)}
+h2{font-size:clamp(1.7rem,4vw,2.5rem);color:var(--ocean)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+section:nth-of-type(even) .card{background:var(--bg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.tabs button{font:600 .95rem Sora,sans-serif;padding:10px 16px;border-radius:10px;border:2px solid var(--ocean);background:transparent;color:var(--ink);cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ocean);color:#fff}
+.tabs button:focus-visible{outline:3px solid var(--teal)}
+.panel{min-height:120px}
+.more{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.more.on{display:block}
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.pc{grid-template-columns:1fr}.turb{display:none}}
+.pc ul{margin:0;padding-left:20px}.pro h3{color:#0a8f7f}.con h3{color:#c2542d}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:720px;font-size:.95rem}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}th{background:var(--navy);color:#fff}
+.bar{display:flex;align-items:center;gap:10px;margin:6px 0;font-size:.95rem}.bar span:first-child{width:130px}
+.bar i{display:block;height:14px;border-radius:7px;background:linear-gradient(90deg,var(--ocean),var(--teal));width:0;transition:width 1s}
+.sim{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}@media(max-width:760px){.sim{grid-template-columns:1fr}}
+label{display:block;font-weight:600;margin-top:12px}input[type=range]{width:100%;accent-color:var(--ocean)}
+.read{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.read div{background:var(--bg);border-radius:10px;padding:8px 10px;font-size:.95rem}
+.read b{display:block;font:800 1.2rem Sora,sans-serif;color:var(--ocean)}
+.note{font-size:.9rem;color:var(--mut)}
+.f{font:600 1.3rem Sora,sans-serif;background:var(--bg);border-left:5px solid var(--teal);padding:10px 14px;border-radius:8px;overflow-x:auto}
+.map{width:100%;background:var(--navy);border-radius:14px}.dot{cursor:pointer}.dot:focus{outline:none}.dot:focus circle,.dot:hover circle{stroke:#fff;stroke-width:3}
+.q button{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
+.q button.ok{background:#bff0e9;color:#053;border-color:var(--teal)}.q button.no{background:#f8d4c8;color:#521;border-color:#c2542d}
+footer{background:var(--navy);color:#cfeaf5;padding:32px 20px;font-size:.95rem}
+@media(prefers-reduced-motion:reduce){.waves,.rot{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav aria-label="Seções"><a href="#oque">O que é</a><a href="#como">Como funciona</a><a href="#tipos">Tipos</a><a href="#comp">Componentes</a><a href="#vd">Vantagens</a><a href="#amb">Ambiente</a><a href="#mundo">No mundo</a><a href="#brasil">Brasil</a><a href="#compara">Comparação</a><a href="#sim">Simulador</a><a href="#fis">Física</a><a href="#cur">Curiosidades</a><a href="#quiz">Quiz</a></nav>
+
+<header class="hero">
+<div class="in">
+<h1>ENERGIA MAREMOTRIZ</h1>
+<p><b>Transformando o movimento dos oceanos em energia para o futuro.</b></p>
+<p>A energia maremotriz é obtida pelo aproveitamento das variações das marés e do movimento das águas oceânicas para produzir eletricidade.</p>
+<a class="btn" href="#oque">Começar a estudar</a><a class="btn o" href="#como">Explorar como funciona</a>
+<div class="three"><div>Fonte de energia renovável</div><div>Aproveitamento dos movimentos naturais dos oceanos</div><div>Potencial para geração previsível de eletricidade</div></div>
+</div>
+<svg class="turb" viewBox="0 0 120 160" aria-hidden="true"><rect x="56" y="60" width="8" height="100" fill="#43BFE8"/><g class="rot"><ellipse cx="60" cy="30" rx="7" ry="28" fill="#00C9B7"/><ellipse cx="60" cy="90" rx="7" ry="28" fill="#00C9B7"/><ellipse cx="30" cy="60" rx="28" ry="7" fill="#00C9B7"/><ellipse cx="90" cy="60" rx="28" ry="7" fill="#00C9B7"/></g><circle cx="60" cy="60" r="8" fill="#fff"/></svg>
+<svg class="waves b" viewBox="0 0 1200 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 Q150 0 300 50 T600 50 T900 50 T1200 50 V100 H0Z" fill="#43BFE8"/></svg>
+<svg class="waves" viewBox="0 0 1200 130" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 Q150 10 300 60 T600 60 T900 60 T1200 60 V130 H0Z" fill="#F1F5F9"/></svg>
+</header>
+
+<section id="oque"><div class="wrap">
+<h2>O que é energia maremotriz?</h2>
+<p>É a energia elétrica gerada a partir das marés: a subida e a descida periódica do nível do mar. A água em movimento, ou a diferença de altura entre dois níveis de água, aciona turbinas ligadas a geradores. Como as marés seguem ciclos astronômicos, o recurso é renovável e previsível, o que a aproxima da sustentabilidade e a diferencia de fontes mais variáveis.</p>
+<div class="grid">
+<div class="card"><h3>Origem das marés</h3><p>As marés surgem principalmente pela atração gravitacional da Lua sobre a água dos oceanos. A Lua puxa com mais força o lado da Terra voltado para ela, criando uma elevação da água; do lado oposto há outra elevação, por efeito da diferença de atração e da rotação do sistema Terra–Lua.</p></div>
+<div class="card"><h3>E o Sol?</h3><p>O Sol também atrai os oceanos, mas com cerca de metade do efeito da Lua por estar muito mais distante. Quando Sol, Terra e Lua se alinham (lua nova e cheia), as marés são mais fortes: marés de sizígia. Em quarto crescente e minguante, são mais fracas: marés de quadratura.</p></div>
+<div class="card"><h3>Maré alta e baixa</h3><p>Maré alta (preamar) é o nível máximo da água; maré baixa (baixa-mar) é o mínimo. Em muitos locais ocorrem duas de cada por dia, com intervalo de cerca de 6 horas entre uma alta e a baixa seguinte. A diferença de altura é a amplitude da maré.</p></div>
+</div>
+<div class="card" style="margin-top:16px"><h3>Terra, Lua e Sol</h3>
+<svg viewBox="0 0 640 220" width="100%" role="img" aria-label="Esquema: Sol, Terra com duas elevações de maré e Lua"><circle cx="50" cy="110" r="38" fill="#f5b942"/><text x="50" y="170" text-anchor="middle" fill="currentColor" font-size="14">Sol</text>
+<ellipse cx="360" cy="110" rx="72" ry="56" fill="#43BFE8" opacity=".7"/><circle cx="360" cy="110" r="46" fill="#087EAD"/><text x="360" y="205" text-anchor="middle" fill="currentColor" font-size="14">Terra (escala fora de proporção)</text>
+<circle cx="590" cy="110" r="18" fill="#b9c4cc"/><text x="590" y="150" text-anchor="middle" fill="currentColor" font-size="14">Lua</text>
+<text x="360" y="30" text-anchor="middle" fill="currentColor" font-size="13">elevações da água voltadas para a Lua e opostas a ela</text></svg>
+<p class="note">Ilustração didática: distâncias e tamanhos não estão em escala.</p></div>
+<div class="card" style="margin-top:16px"><h3>Subida e descida do nível do mar</h3>
+<svg viewBox="0 0 600 140" width="100%" aria-label="Animação do nível do mar" role="img"><rect width="600" height="140" fill="#e6f4fa"/><rect id="sea" x="0" y="70" width="600" height="70" fill="#087EAD"/><rect x="520" y="10" width="6" height="120" fill="#062B45"/><text x="470" y="20" font-size="12" fill="#062B45">régua de maré</text></svg>
+<p><b>Você sabia?</b> A Lua leva cerca de 24 h 50 min para voltar ao mesmo ponto do céu; por isso o horário das marés atrasa cerca de 50 minutos por dia.</p></div>
+</div></section>
+
+<section id="como"><div class="wrap">
+<h2>Como funciona?</h2>
+<p>Do movimento das marés à rede elétrica, o processo tem cinco etapas. Selecione cada uma.</p>
+<div class="tabs" role="tablist" id="stepTabs"></div>
+<div class="card panel" id="stepPanel" aria-live="polite"></div>
+<svg viewBox="0 0 600 150" width="100%" style="margin-top:16px" role="img" aria-label="Infográfico: água, turbina, gerador, transformador, rede"><rect width="600" height="150" rx="12" fill="#062B45"/>
+<path d="M0 75 Q40 50 80 75 T160 75" stroke="#43BFE8" stroke-width="6" fill="none"><animate attributeName="d" dur="2s" repeatCount="indefinite" values="M0 75 Q40 50 80 75 T160 75;M0 75 Q40 100 80 75 T160 75;M0 75 Q40 50 80 75 T160 75"/></path>
+<g class="rot" style="animation-duration:2s"><ellipse cx="220" cy="55" rx="6" ry="24" fill="#00C9B7"/><ellipse cx="220" cy="95" rx="6" ry="24" fill="#00C9B7"/></g>
+<rect x="290" y="50" width="60" height="50" rx="8" fill="#087EAD"/><text x="320" y="80" fill="#fff" font-size="12" text-anchor="middle">Gerador</text>
+<rect x="400" y="50" width="70" height="50" rx="8" fill="#43BFE8"/><text x="435" y="80" fill="#062B45" font-size="12" text-anchor="middle">Transform.</text>
+<rect x="515" y="50" width="70" height="50" rx="8" fill="#00C9B7"/><text x="550" y="80" fill="#062B45" font-size="12" text-anchor="middle">Rede</text>
+<g stroke="#fff" stroke-width="2"><path d="M250 75H288"/><path d="M350 75H398"/><path d="M470 75H513"/></g><text x="80" y="130" fill="#fff" font-size="12" text-anchor="middle">Água</text><text x="220" y="140" fill="#fff" font-size="12" text-anchor="middle">Turbina</text></svg>
+</div></section>
+
+<section id="tipos"><div class="wrap">
+<h2>Tipos de energia maremotriz</h2>
+<div class="grid" id="types"></div>
+</div></section>
+
+<section id="comp"><div class="wrap">
+<h2>Principais componentes de uma usina</h2>
+<div class="grid" id="comps"></div>
+</div></section>
+
+<section id="vd"><div class="wrap">
+<h2>Vantagens e desvantagens</h2>
+<div class="pc">
+<div class="card pro"><h3>Vantagens</h3><ul><li><b>Renovável:</b> usa um fenômeno natural contínuo.</li><li><b>Previsível:</b> as marés podem ser calculadas com anos de antecedência.</li><li><b>Independe do sol:</b> gera também à noite e com tempo nublado.</li><li><b>Baixa emissão</b> de gases de efeito estufa durante a operação.</li><li><b>Potencial</b> em regiões costeiras adequadas.</li><li><b>Diversifica</b> a matriz energética.</li></ul></div>
+<div class="card con"><h3>Desvantagens</h3><ul><li><b>Investimento inicial alto.</b></li><li><b>Construção e manutenção complexas</b> em ambiente marinho.</li><li><b>Poucos locais adequados</b> (grande amplitude de maré).</li><li><b>Impactos</b> possíveis em ecossistemas marinhos.</li><li><b>Circulação da água e sedimentos</b> podem mudar.</li><li><b>Interferência</b> na pesca e na navegação.</li><li><b>Ciclos das marés</b> limitam os horários de geração.</li></ul></div>
+</div></div></section>
+
+<section id="amb"><div class="wrap">
+<h2>Impactos ambientais</h2>
+<p>Os efeitos variam conforme a tecnologia e o local. Barragens tendem a alterar mais o ambiente que turbinas de corrente, e cada projeto exige estudo de impacto próprio.</p>
+<div class="grid">
+<div class="card"><h3>Ecossistemas e fauna</h3><p>Barreiras e turbinas podem afetar a migração e a mortalidade de peixes e outros organismos, além de mudar habitats.</p></div>
+<div class="card"><h3>Sedimentos, salinidade e circulação</h3><p>Reter água em uma bacia altera o transporte de sedimentos, a troca de água e a salinidade, com efeitos possíveis em manguezais e na linha de costa.</p></div>
+<div class="card"><h3>Ruído</h3><p>Turbinas e obras emitem ruído subaquático, que pode perturbar animais que se orientam pelo som.</p></div>
+<div class="card"><h3>Como reduzir</h3><p>Turbinas de rotação lenta, grades e desenhos amigáveis a peixes, escolha criteriosa do local, monitoramento contínuo e operação que preserve a troca de água.</p></div>
+</div>
+<div class="card" style="margin-top:16px"><h3>Costa antes e depois (ilustrativo)</h3>
+<div class="tabs" id="ba"><button aria-selected="true" data-v="0">Antes</button><button aria-selected="false" data-v="1">Depois (exemplo com barragem)</button></div>
+<svg viewBox="0 0 600 120" width="100%" role="img" aria-label="Costa antes e depois"><rect width="600" height="120" fill="#e6f4fa"/><path id="coast" d="M0 70 Q150 40 300 70 T600 70 V120 H0Z" fill="#087EAD"/><g id="mang" fill="#2e8b57"><circle cx="40" cy="62" r="10"/><circle cx="70" cy="58" r="10"/><circle cx="560" cy="62" r="10"/></g><rect id="dam" x="290" y="40" width="18" height="80" fill="#062B45" opacity="0"/></svg>
+<p class="note" id="baT">Estuário aberto: a água entra e sai livremente.</p></div>
+</div></section>
+
+<section id="mundo"><div class="wrap">
+<h2>Energia maremotriz no mundo</h2>
+<p>Selecione um ponto no mapa. As posições são aproximadas e o mapa é esquemático.</p>
+<svg class="map" viewBox="0 0 720 360" role="group" aria-label="Mapa-múndi esquemático" id="map"><g stroke="#16506f" stroke-width="1"><path d="M0 180H720M0 90H720M0 270H720M180 0V360M360 0V360M540 0V360"/></g>
+<g fill="#0e5c80"><path d="M80 60l120-10 40 40-30 60-60 50-50-30-30-60z"/><path d="M230 210l50 10 20 80-30 40-30-60z"/><path d="M340 60l120-10 150 20 60 60-70 40-60-10-40 90-50-50-40-50-50-20z"/></g></svg>
+<div class="card" id="mapInfo" style="margin-top:12px" aria-live="polite"></div>
+<p class="note">Não foi possível incorporar fotografias reais nesta versão: use os nomes dos projetos para buscar imagens em fontes oficiais (EDF, K-water, MeyGen, EMEC).</p>
+</div></section>
+
+<section id="brasil"><div class="wrap">
+<h2>Energia maremotriz no Brasil</h2>
+<p>O litoral do Norte e do Nordeste, em especial o Maranhão, o Pará e o Amapá, tem marés de grande amplitude (macromarés), as mais promissoras do país para esse uso. Em São Luís, a amplitude em marés de sizígia passa de 6 m, valor da ordem das usinas estrangeiras.</p>
+<div class="card"><h3>Bacanga, São Luís (MA)</h3><p>A região do estuário do rio Bacanga foi estudada como possível local de aproveitamento maremotriz, em razão da combinação entre grande amplitude de maré e uma baía abrigada. A barragem do Bacanga, construída para ligar áreas da cidade, é parte do contexto histórico desses estudos, que se somam às pesquisas de universidades e instituições nacionais sobre energia oceânica.</p>
+<p class="note"><b>Transparência:</b> o Brasil não tem usina maremotriz comercial em operação. Dados de potência instalada ou produção não são apresentados porque não há comprovação. Confira detalhes históricos do Bacanga em fontes primárias (publicações acadêmicas e de órgãos do setor elétrico).</p></div>
+<div class="grid" style="margin-top:16px"><div class="card"><h3>Desafios</h3><p>Custo elevado, impactos em manguezais e na pesca artesanal, sedimentos e tecnologia ainda pouco testada no país.</p></div><div class="card"><h3>Caminhos</h3><p>Pesquisa nacional, projetos-piloto de pequena escala e estudos ambientais detalhados antes de qualquer implantação.</p></div></div>
+</div></section>
+
+<section id="compara"><div class="wrap">
+<h2>Comparação com outras fontes</h2>
+<div class="tw"><table><tr><th>Fonte</th><th>Recurso</th><th>Previsibilidade</th><th>Impacto ambiental</th><th>Custo de implantação</th><th>Dependência geográfica</th></tr>
+<tr><td>Solar</td><td>Radiação solar</td><td>Média (dia/nuvens)</td><td>Baixo a médio</td><td>Baixo a médio</td><td>Baixa</td></tr>
+<tr><td>Eólica</td><td>Vento</td><td>Média a baixa</td><td>Baixo a médio</td><td>Médio</td><td>Média</td></tr>
+<tr><td>Hidrelétrica</td><td>Rios e desníveis</td><td>Alta (depende de chuvas)</td><td>Médio a alto</td><td>Alto</td><td>Alta</td></tr>
+<tr><td>Geotérmica</td><td>Calor da Terra</td><td>Alta</td><td>Baixo a médio</td><td>Alto</td><td>Muito alta</td></tr>
+<tr><td>Das ondas</td><td>Ondas (vento no mar)</td><td>Média</td><td>Em estudo</td><td>Alto</td><td>Alta (costas)</td></tr>
+<tr><td>Maremotriz</td><td>Marés (Lua e Sol)</td><td>Muito alta</td><td>Médio a alto</td><td>Alto</td><td>Muito alta</td></tr></table></div>
+<p class="note">Classificação qualitativa e simplificada para estudo; valores reais variam por projeto e país.</p>
+<div class="card" id="bars" style="margin-top:12px"><h3>Previsibilidade (nota didática de 0 a 10)</h3></div>
+<p><b>Ondas × marés:</b> a energia das ondas vem do vento agindo sobre a superfície do mar e varia bastante; a maremotriz vem da atração gravitacional de Lua e Sol e segue ciclos regulares. São tecnologias distintas.</p>
+</div></section>
+
+<section id="sim"><div class="wrap">
+<h2>Simulador interativo</h2>
+<div class="sim"><div>
+<svg viewBox="0 0 400 260" width="100%" role="img" aria-label="Simulador de usina maremotriz"><rect width="400" height="260" fill="#e6f4fa"/>
+<rect id="basin" x="0" y="100" width="170" height="160" fill="#43BFE8"/><rect id="ocean" x="230" y="100" width="170" height="160" fill="#087EAD"/>
+<rect x="170" y="60" width="60" height="200" fill="#062B45"/><rect x="170" y="150" width="60" height="22" fill="#00C9B7" opacity=".5"/>
+<g id="tg" style="transform-origin:200px 161px"><ellipse cx="200" cy="148" rx="4" ry="12" fill="#fff"/><ellipse cx="200" cy="174" rx="4" ry="12" fill="#fff"/><ellipse cx="187" cy="161" rx="12" ry="4" fill="#fff"/><ellipse cx="213" cy="161" rx="12" ry="4" fill="#fff"/></g>
+<circle id="lamp" cx="200" cy="30" r="14" fill="#555"/><text x="85" y="250" text-anchor="middle" font-size="12" fill="#062B45">Bacia</text><text x="315" y="250" text-anchor="middle" font-size="12" fill="#fff">Oceano</text></svg>
+<div class="read"><div>Nível da água<b id="o1">—</b></div><div>Velocidade da corrente<b id="o2">—</b></div><div>Rotação da turbina<b id="o3">—</b></div><div>Energia gerada<b id="o4">—</b></div></div></div>
+<div><label>Maré no oceano: <span id="v1"></span><input id="s1" type="range" min="0" max="100" value="80"></label>
+<label>Altura da água na bacia: <span id="v2"></span><input id="s2" type="range" min="0" max="100" value="30"></label>
+<button class="btn" id="auto" style="background:var(--ocean);color:#fff;margin-top:14px">Animar ciclo de maré</button>
+<p class="note">Condições de comparação: tente maré fraca (diferença pequena) e maré forte (diferença grande). Todos os valores são <b>simulação didática</b>, não medições de usina real.</p></div></div>
+</div></section>
+
+<section id="fis"><div class="wrap">
+<h2>Fórmulas e conceitos físicos</h2>
+<div class="grid">
+<div class="card"><h3>Energia potencial gravitacional</h3><div class="f">E = m · g · h</div><p>m: massa (kg); g: gravidade (≈ 9,8 m/s²); h: altura (m); E em joules (J). A água elevada pela maré armazena energia.</p></div>
+<div class="card"><h3>Potência hidráulica</h3><div class="f">P = ρ · g · Q · H · η</div><p>ρ: densidade da água (≈ 1000 kg/m³ doce; ≈ 1025 do mar); Q: vazão (m³/s); H: altura hidráulica disponível (m); η: rendimento (0 a 1); P em watts (W).</p></div>
+<div class="card"><h3>Outros conceitos</h3><p><b>Energia cinética:</b> E = ½·m·v². <b>Potência:</b> energia por tempo (P = E/t). <b>Conversão:</b> potencial → cinética → mecânica (turbina) → elétrica (gerador). <b>Rendimento:</b> parte útil ÷ total.</p></div>
+</div>
+<div class="card" style="margin-top:16px"><h3>Exercício 1</h3><p>Quanta energia potencial têm 1000 kg de água a 5 m de altura?</p><p>E = m·g·h = 1000 × 9,8 × 5 = <b>49 000 J</b>.</p>
+<h3>Exercício 2</h3><p>Q = 100 m³/s, H = 5 m, ρ = 1000 kg/m³, η = 0,8. Qual a potência?</p><p>P = 1000 × 9,8 × 100 × 5 × 0,8 = 3 920 000 W = <b>3,92 MW</b>.</p></div>
+</div></section>
+
+<section id="cur"><div class="wrap">
+<h2>Curiosidades</h2>
+<div class="grid">
+<div class="card"><h3>Moinhos de maré</h3><p>Moinhos movidos pelas marés já eram usados na Europa há séculos.</p></div>
+<div class="card"><h3>La Rance</h3><p>Inaugurada em 1966, foi a primeira grande usina maremotriz do mundo.</p></div>
+<div class="card"><h3>Baía de Fundy</h3><p>No Canadá, tem uma das maiores amplitudes de maré do planeta, de mais de 15 m.</p></div>
+<div class="card"><h3>Marés em lagos</h3><p>Grandes lagos têm marés minúsculas, por isso não servem para esse uso.</p></div>
+</div></div></section>
+
+<section id="quiz"><div class="wrap">
+<h2>Teste seus conhecimentos</h2>
+<div id="qz"></div>
+</div></section>
+
+<footer><div class="wrap">Conteúdo educacional simplificado. Dados de projetos devem ser conferidos nas fontes oficiais. Esta versão cobre as 14 seções do roteiro; as seções seguintes ao item 14 não constavam no texto recebido.</div></footer>
+
+<script>
+var $=function(s){return document.querySelector(s)};
+var steps=[["Movimento das marés","A atração gravitacional da Lua e do Sol provoca variações periódicas no nível dos oceanos."],["Movimentação da água","A diferença entre os níveis de água (barragem ou lagoa) ou as correntes das marés fazem a água se mover com força."],["Funcionamento das turbinas","A água em movimento empurra as pás das turbinas e as faz girar."],["Acionamento do gerador","O eixo da turbina gira o gerador, que converte energia mecânica em energia elétrica."],["Distribuição da eletricidade","Sistemas de controle e transformadores ajustam a tensão antes de a energia seguir pelos cabos até a rede elétrica."]];
+var st=$("#stepTabs");steps.forEach(function(s,i){var b=document.createElement("button");b.setAttribute("role","tab");b.textContent="Etapa "+(i+1);b.onclick=function(){sel(i)};st.appendChild(b)});
+function sel(i){[].forEach.call(st.children,function(b,j){b.setAttribute("aria-selected",j==i)});$("#stepPanel").innerHTML="<h3>Etapa "+(i+1)+": "+steps[i][0]+"</h3><p>"+steps[i][1]+"</p>"}sel(0);
+var types=[["Usinas de barragem","Uma barragem fecha um estuário; a água entra na maré alta e sai pelas turbinas quando o nível baixa (ou nos dois sentidos).","Vantagens: tecnologia madura e geração previsível. Desvantagens: custo alto e impacto no estuário. Aplicação: estuários com grande amplitude."],["Turbinas de corrente de maré","Turbinas submersas, parecidas com hélices de aerogeradores, aproveitam a energia cinética das correntes.","Vantagens: menos obras civis e menor impacto visual. Limitações: manutenção submarina e locais com correntes fortes."],["Lagoas maremotrizes","Muros em forma de anel na costa delimitam uma área; a diferença entre a maré e o nível interno move as turbinas.","Evitam fechar um estuário inteiro, mas ainda exigem obras grandes."],["Sistemas híbridos","A maremotriz pode ser combinada com solar e eólica para equilibrar a oferta ao longo do dia.","Ex.: a solar gera de dia, a eólica varia, a maré tem horários previsíveis."]];
+$("#types").innerHTML=types.map(function(t,i){return '<div class="card"><h3>'+t[0]+'</h3><p>'+t[1]+'</p><button class="btn" style="background:var(--ocean);color:#fff" data-i="'+i+'" aria-expanded="false">Saiba mais</button><div class="more" id="m'+i+'">'+t[2]+'</div></div>'}).join("");
+$("#types").onclick=function(e){var b=e.target.closest("button");if(!b)return;var m=$("#m"+b.dataset.i);var on=m.classList.toggle("on");b.setAttribute("aria-expanded",on)};
+var comps=[["Barragem","Fecha o estuário e cria a diferença de nível."],["Comportas","Controlam a entrada e a saída da água."],["Turbinas hidráulicas","Transformam o movimento da água em rotação."],["Geradores elétricos","Convertem a rotação em eletricidade."],["Eixos de transmissão","Ligam a turbina ao gerador."],["Sistemas de controle","Regulam comportas, turbinas e segurança."],["Transformadores","Ajustam a tensão para a rede."],["Cabos submarinos","Levam a energia até a costa."],["Estruturas de proteção","Protegem contra ondas, corrosão e impactos."]];
+$("#comps").innerHTML=comps.map(function(c){return '<div class="card"><h3>'+c[0]+'</h3><p>'+c[1]+'</p></div>'}).join("");
+var sea=$("#sea"),ph=0;setInterval(function(){ph+=.04;var y=70+Math.sin(ph)*30;sea.setAttribute("y",y);sea.setAttribute("height",140-y)},50);
+$("#ba").onclick=function(e){var b=e.target.closest("button");if(!b)return;var v=+b.dataset.v;[].forEach.call($("#ba").children,function(x){x.setAttribute("aria-selected",x==b)});$("#dam").setAttribute("opacity",v?1:0);$("#mang").setAttribute("opacity",v?.4:1);$("#baT").textContent=v?"Com barreira: a troca de água e o transporte de sedimentos mudam, e manguezais podem sofrer. O efeito real depende do projeto.":"Estuário aberto: a água entra e sai livremente."};
+var pts=[["La Rance, França",[-2,48.6],"Costa da Bretanha. Inaugurada em 1966, usa uma barragem sobre o rio Rance e turbinas bulbo; cerca de 240 MW. Marco histórico da tecnologia."],["Lago Sihwa, Coreia do Sul",[126.6,37.3],"Aproveita uma barragem já existente contra inundações, com 10 turbinas; cerca de 254 MW, em operação desde 2011."],["MeyGen, Escócia (Reino Unido)",[-3.1,58.7],"No estreito de Pentland Firth, é um dos maiores projetos de turbinas submersas de corrente de maré."],["EMEC, Orkney, Escócia",[-3,59],"Centro europeu de testes de energia marinha, onde tecnologias de correntes e ondas são avaliadas."],["Bacanga, São Luís, Brasil",[-44.3,-2.6],"Local de estudos sobre energia maremotriz no Maranhão. Não há usina comercial em operação."]];
+var map=$("#map");pts.forEach(function(p,i){var x=(p[1][0]+180)*2,y=(90-p[1][1])*2;var g=document.createElementNS("http://www.w3.org/2000/svg","g");g.setAttribute("class","dot");g.setAttribute("tabindex","0");g.setAttribute("role","button");g.setAttribute("aria-label",p[0]);g.innerHTML='<circle cx="'+x+'" cy="'+y+'" r="7" fill="#00C9B7"/>';var f=function(){$("#mapInfo").innerHTML="<h3>"+p[0]+"</h3><p>"+p[2]+"</p>"};g.onclick=f;g.onkeydown=function(e){if(e.key=="Enter"||e.key==" ")f()};map.appendChild(g)});
+$("#mapInfo").innerHTML="<p>Escolha um ponto no mapa.</p>";
+var bars=[["Solar",5],["Eólica",4],["Hidrelétrica",7],["Geotérmica",8],["Ondas",5],["Maremotriz",10]];
+$("#bars").innerHTML+=bars.map(function(b){return '<div class="bar"><span>'+b[0]+'</span><i data-w="'+b[1]*10+'"></i></div>'}).join("");
+new IntersectionObserver(function(en,o){en.forEach(function(e){if(e.isIntersecting){[].forEach.call(e.target.querySelectorAll("i"),function(i){i.style.width=i.dataset.w+"%"});o.unobserve(e.target)}})}).observe($("#bars"));
+var s1=$("#s1"),s2=$("#s2"),ang=0,run=false,t0=0;
+function sim(){var o=+s1.value,b=+s2.value,H=Math.abs(o-b)/100*8;var oy=260-(o/100*160),by=260-(b/100*160);
+$("#ocean").setAttribute("y",oy);$("#basin").setAttribute("y",by);
+$("#v1").textContent=(o/100*8).toFixed(1)+" m";$("#v2").textContent=(b/100*8).toFixed(1)+" m";
+var v=Math.sqrt(2*9.8*H),Q=60,P=1025*9.8*Q*H*.8/1e6;
+$("#o1").textContent="Δ "+H.toFixed(1)+" m";$("#o2").textContent=v.toFixed(1)+" m/s";$("#o3").textContent=Math.round(v*9)+" rpm";$("#o4").textContent=P.toFixed(2)+" MW";
+$("#lamp").setAttribute("fill",P>.5?"#f5d442":"#555");sim.v=v}
+s1.oninput=s2.oninput=sim;sim();
+(function loop(){ang+=(sim.v||0)*.6;$("#tg").style.transform="rotate("+ang+"deg)";requestAnimationFrame(loop)})();
+$("#auto").onclick=function(){run=!run;this.textContent=run?"Parar ciclo":"Animar ciclo de maré";if(run)(function c(t){if(!run)return;s1.value=50+45*Math.sin(t/1500);sim();requestAnimationFrame(c)})(0)};
+var qs=[["Qual astro tem maior influência sobre as marés?",["Lua","Sol","Marte"],0],["Qual é a fórmula da potência hidráulica?",["P = m·g·h","P = ρ·g·Q·H·η","P = ½·m·v²"],1],["Energia maremotriz e energia das ondas são...",["a mesma coisa","tecnologias distintas","só no Brasil"],1]];
+$("#qz").innerHTML=qs.map(function(q,i){return '<div class="card q" style="margin-bottom:12px"><b>'+(i+1)+'. '+q[0]+'</b>'+q[1].map(function(a,j){return '<button data-q="'+i+'" data-j="'+j+'">'+a+'</button>'}).join("")+'</div>'}).join("");
+$("#qz").onclick=function(e){var b=e.target.closest("button");if(!b)return;var ok=qs[b.dataset.q][2]==b.dataset.j;b.className=ok?"ok":"no"};
+</script>
+</body>
+</html>
